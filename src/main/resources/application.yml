@@ -1,0 +1,40 @@
+# Anything that goes here is made globally for all profiles.
+spring:
+  application:
+    name: tmem-comment
+
+---
+# Anything that goes here is made specifically for dev's profile.
+spring:
+  profiles: dev
+
+---
+# Anything that goes here is made specifically for clouds's profile.
+# Cloud is the default profile that Google Clound Foundry makes your application use if you do not override it.
+spring:
+  profiles: cloud, default
+
+---
+# Anything that goes here is made specifically for local's profile.
+spring:
+  profiles: local
+server:
+  port: 50000
+
+---
+# H2 Configuration 
+spring:
+  datasource:
+    url: jdbc:h2:mem:db
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+  jpa:
+    defer-datasource-initialization: true
+    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+
